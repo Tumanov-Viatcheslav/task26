@@ -2,11 +2,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
 public class Circles {
     public static void main(String[] args) {
+        boolean isIntersected = true;
         int character;
         String buffer = "";
-        String[] banditScores;
+        String[] circlesValues;
+
         try(FileReader input = new FileReader("input.txt")) {
             while((character = input.read()) != -1) {
                 buffer += (char)character;
@@ -14,10 +17,17 @@ public class Circles {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-        banditScores = buffer.split(" ");
+        circlesValues = buffer.split("\r\n");
+        Circle circle1 = new Circle(circlesValues[0]), circle2 = new Circle(circlesValues[1]);
+        isIntersected = ((circle2.x - circle1.x) * (circle2.x - circle1.x) + (circle2.y - circle1.y) * (circle2.y - circle1.y)) <=
+                            (circle1.radius + circle2.radius) * (circle1.radius + circle2.radius);
         try(FileWriter output = new FileWriter("output.txt")) {
-            //Т.к. в конце бандиты выстрелили в одну банку, то количество банок, в которые они не выстрелили, равно количеству банок противника минус одна общая
-            output.write((Integer.parseInt(banditScores[1]) - 1) + " " + (Integer.parseInt(banditScores[0]) - 1));
+            if (isIntersected) {
+                output.write("YES");
+            }
+            else {
+                output.write("NO");
+            }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
