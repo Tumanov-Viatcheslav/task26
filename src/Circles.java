@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Circles {
     public static void main(String[] args) {
-        boolean isIntersected = true;
+        boolean isIntersected;
         int character;
         String buffer = "";
         String[] circlesValues;
