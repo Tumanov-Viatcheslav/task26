@@ -25,7 +25,7 @@ public class Circles {
                             (circle2.radius - circle1.radius) * (circle2.radius - circle1.radius);
 
         try(FileWriter output = new FileWriter("output.txt")) {
-            if (isIntersectedOutside && isIntersecredInside) {
+            if (isIntersectedOutside && isIntersectedInside) {
                 output.write("YES");
             }
             else {
