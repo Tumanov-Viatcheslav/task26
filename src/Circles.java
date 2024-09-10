@@ -21,7 +21,7 @@ public class Circles {
         Circle circle1 = new Circle(circlesValues[0]), circle2 = new Circle(circlesValues[1]);
         isIntersectedOutside = ((circle2.x - circle1.x) * (circle2.x - circle1.x) + (circle2.y - circle1.y) * (circle2.y - circle1.y)) <=
                             (circle1.radius + circle2.radius) * (circle1.radius + circle2.radius);
-        isIntersectedInside = ((circle2.x - circle1.x) * (circle2.x - circle1.x) + (circle2.y - circle1.y) * (circle2.y - circle1.y)) <=
+        isIntersectedInside = ((circle2.x - circle1.x) * (circle2.x - circle1.x) + (circle2.y - circle1.y) * (circle2.y - circle1.y)) >=
                             (circle2.radius - circle1.radius) * (circle2.radius - circle1.radius);
 
         try(FileWriter output = new FileWriter("output.txt")) {
